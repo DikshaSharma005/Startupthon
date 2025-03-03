@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 import { FaArrowRight } from "react-icons/fa";
 import { rewardsCardData } from "../data/rewardsCardData";
 import { RewardCard } from "../components/Home/RewardCard";
@@ -12,7 +12,7 @@ export function HomePage() {
   return (
     <div>
       <section className="relative gap-8 mx-auto flex flex-col w-11/12 max-w-maxContent items-center text-white justify-between">
-        <h1 className="text-center mt-16 text-4xl font-semibold">
+        <h1 className="text-center mt-20 text-4xl font-semibold">
           Your chance to{" "}
           <span
             className="bg-gradient-to-tr from-indigo-600 to-violet-600
@@ -23,7 +23,7 @@ export function HomePage() {
           as a Founder
         </h1>
         <Link>
-          <div className="group mt-4 p-1 mx-auto rounded-full bg-richblack-800 font-bold text-richblack-200 shadow-[0_4px_6px_rgba(221,230,237,0.5)] transition-all duration-200 hover:scale-95 w-fit border">
+          <div className="group mt-2 p-1 mx-auto rounded-full bg-richblack-800 font-bold text-richblack-200 shadow-[0_4px_6px_rgba(221,230,237,0.5)] transition-all duration-200 hover:scale-95 w-fit border">
             <div className="flex items-center rounded-full px-10 py-[5px] transition-all duration-200 group-hover:bg-violet-600 group-hover:text-black gap-2">
               <p>Apply for fellowship</p>
               <FaArrowRight />
@@ -40,7 +40,12 @@ export function HomePage() {
             loop
             autoPlay
           >
-            { <source src="https://res.cloudinary.com/dprwx4dws/video/upload/v1741009482/Meet_the_Persist_Ventures_Team_-_Persist_Ventures_1080p_h264_q2yjfs.mp4" type="video/mp4" /> }
+            {
+              <source
+                src="https://res.cloudinary.com/dprwx4dws/video/upload/v1741009482/Meet_the_Persist_Ventures_Team_-_Persist_Ventures_1080p_h264_q2yjfs.mp4"
+                type="video/mp4"
+              />
+            }
           </video>
         </div>
       </section>
@@ -62,7 +67,7 @@ export function HomePage() {
         </div>
       </section>
       {/* ongoing startupthon */}
-      <section>
+      <section id="on-going">
         <div className="mt-16">
           <h1 className="text-center text-4xl font-semibold">
             <span
@@ -80,7 +85,7 @@ export function HomePage() {
         </div>
       </section>
       {/* completed startupthon */}
-      <section>
+      <section id="completed">
         <div className="mt-16">
           <h1 className="text-center text-4xl font-semibold">
             <span
@@ -98,7 +103,7 @@ export function HomePage() {
         </div>
       </section>
       {/* mentor network */}
-      <section>
+      <section id="mentors">
         <div className="mt-16">
           <h1 className="text-center text-4xl font-semibold">
             <span
@@ -117,7 +122,7 @@ export function HomePage() {
         </div>
       </section>
       {/* startupthon guide */}
-      <section>
+      <section id="guide">
         <div className="mt-16">
           <h1 className="text-center text-4xl font-semibold">
             <span
@@ -136,7 +141,7 @@ export function HomePage() {
         <TimelinePage />
       </section>
       {/* hiring process */}
-      <section>
+      <section id="win">
         <div className="mt-16">
           <h1 className="text-center text-4xl font-semibold">
             <span
@@ -162,7 +167,7 @@ export function HomePage() {
               Ready to Begin? Select your challenge and take the first step
               toward joining our team today!
             </span>
-            <Link>
+            <Link to="on-going">
               <div className="group mt-6 p-1 mx-auto rounded-full bg-richblack-800 font-bold text-white shadow-[0_4px_6px_rgba(221,230,237,0.5)] transition-all duration-200 hover:scale-95 w-fit border">
                 <div className="flex items-center rounded-full px-10 py-[5px] transition-all duration-200 group-hover:bg-violet-600 group-hover:text-black gap-2">
                   <p>Start now</p>
