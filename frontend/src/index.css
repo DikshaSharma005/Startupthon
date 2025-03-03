@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@layer utilities {
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    .animate-[scroll_var(--animation-duration)_linear_infinite] {
+      animation: scroll var(--animation-duration) linear infinite;
+    }
+  }
+  
