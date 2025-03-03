@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { FaTrash, FaLock, FaLockOpen } from "react-icons/fa";
 import {
   allData,
@@ -56,43 +55,40 @@ export function Challenges() {
   };
 
   return (
-    <div className="flex flex-row justify-between items-start min-h-screen  p-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-3/4">
-        {data.map((item) => (
-          <div key={item._id} className="relative flex flex-col w-80 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 text-gray-700 shadow-md p-4">
-            <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-amber-50 shadow-lg">
-              <img
-                src={item.challengeImage}
-                alt={item.title}
-                className="w-full h-full object-cover"
-              />
+    <div className="flex flex-row justify-center items-start min-h-screen bg-gray-900 p-10 gap-10">
+      {/* Challenges Data Display */}
+      <div className="w-1/2 bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 className="text-white text-xl font-semibold mb-4">Challenges</h2>
+        <div className="space-y-4">
+          {data.map((item) => (
+            <div key={item._id} className="bg-gray-700 text-white p-4 rounded-lg">
+              <h3 className="text-lg font-semibold">{item.title}</h3>
+              <img src={item.challengeImage} alt={item.title} className="w-20 h-20 rounded-full mt-2" />
+              <p className="text-sm">Description: {item.description}</p>
+              <p className="text-sm">Funding: {item.fundingAmount}</p>
+              <p className="text-sm">Deadline: {new Date(item.deadlineChallenge).toDateString()}</p>
+              <div className="flex gap-2 mt-2">
+                <button
+                  onClick={() => toggleSystem(item._id)}
+                  className="bg-indigo-500 hover:bg-indigo-600 text-white px-3 py-1 rounded"
+                >
+                  {item.isPublic ? <FaLockOpen /> : <FaLock />} {item.isPublic ? "Make Private" : "Make Public"}
+                </button>
+                <button
+                  onClick={() => deleteSystem(item._id)}
+                  className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                >
+                  <FaTrash /> Delete
+                </button>
+              </div>
             </div>
-            <div className="p-6 flex flex-col justify-between">
-              <h5 className="mb-2 text-2xl font-semibold text-black">{item.title}</h5>
-              <p className="text-fuchsia-50 text-base">
-                {item.description.length > 120 ? item.description.slice(0, 120) + "..." : item.description}
-              </p>
-              <p className="text-fuchsia-50 text-base font-light">Funding: {item.fundingAmount}</p>
-            </div>
-            <div className="flex justify-between items-center p-4">
-              <button
-                onClick={() => toggleSystem(item._id)}
-                className="text-white flex items-center gap-2 bg-indigo-500 py-2 px-4 rounded-lg hover:bg-indigo-600"
-              >
-                {item.isPublic ? <FaLockOpen /> : <FaLock />} {item.isPublic ? "Make Private" : "Make Public"}
-              </button>
-              <button
-                onClick={() => deleteSystem(item._id)}
-                className="text-red-500 flex items-center gap-2 py-2 px-4 rounded-lg hover:text-red-700"
-              >
-                <FaTrash /> Delete
-              </button>
-            </div>
-            <p className="text-fuchsia-50 text-base font-light p-4">Deadline: {new Date(item.deadlineChallenge).toDateString()}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      <form className="text-white flex flex-col gap-4 bg-gray-800 p-6 rounded-lg shadow-lg w-96 right-6 top-20">
+
+      {/* Challenges Form */}
+      <form className="w-1/3 text-white flex flex-col gap-4 bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 className="text-xl font-semibold">Add Challenge</h2>
         <label className="flex flex-col gap-1">
           Title:
           <input
@@ -119,7 +115,7 @@ export function Challenges() {
             type="text"
             value={fundingAmount}
             onChange={(e) => setFundingAmount(e.target.value)}
-            placeholder="Funding"
+            placeholder="Funding Amount"
             className="p-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-violet-500"
           />
         </label>
