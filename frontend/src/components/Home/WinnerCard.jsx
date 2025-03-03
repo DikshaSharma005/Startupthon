@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 export function WinnerCard({ data }) {
-  console.log(data)
   return (
     <div className="relative flex items-center justify-center mt-16">
       <div className="group relative w-80 h-100 cursor-pointer perspective-1000">
@@ -27,7 +26,11 @@ export function WinnerCard({ data }) {
           <h2 className="text-lg font-medium text-white">
             {data.position}, {data.projectName}
           </h2>
-          <p className="text-gray-300 text-center mt-2">{data.description}</p>
+          <p className="text-gray-300 text-center mt-2">
+            {data.description.length > 150
+              ? data.description.slice(0, 150) + "..."
+              : data.description}
+          </p>
           <p className="text-gray-300 text-center mt-2 mb-6">
             {" "}
             Initial funding offered: {data.fundingAmount}

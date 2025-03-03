@@ -16,9 +16,9 @@ export function OnGoingStartupthonCard({ data }) {
         </h5>
         <div className="flex flex-col gap-4 justify-between">
           <p className="block font-sans text-fuchsia-50 text-base  leading-relaxed  antialiased">
-            {/* {data?.description.length > 120
+            {data?.description.length > 120
               ? data?.description.slice(0, 120) + "..."
-              : data?.description} */}
+              : data?.description}
           </p>
           <p className="block font-sans text-base font-light leading-relaxed text-fuchsia-50 antialiased">
             {data?.fundingAmount}
@@ -35,7 +35,7 @@ export function OnGoingStartupthonCard({ data }) {
         </button>
       </Link>
       <p className="block font-sans text-base font-light leading-relaxed text-fuchsia-50 antialiased pb-2 pl-6">
-        deadline : {data?.deadlineChallenge}
+        deadline : {new Date(data?.deadlineChallenge).toDateString()}
       </p>
     </div>
   );
